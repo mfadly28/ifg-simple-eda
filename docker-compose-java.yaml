@@ -1,0 +1,18 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: src/main/docker/Dockerfile.jvm
+    container_name: quarkus-order-app
+    ports:
+      - "8080:8080"
+    networks:
+      - kafka-net
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      MP_MESSAGING_CONNECTOR_SMALLRYE_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+
+networks:
+  kafka-net:
+    external: true
+    name: kafka-network
