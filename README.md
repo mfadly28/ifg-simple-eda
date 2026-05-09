@@ -51,8 +51,11 @@ Aplikasi akan berjalan dengan port 8080
 ---
 
 ## 3. Cara Pengujian Endpoint
-Gunakan Postman, Apidog atau tools pengujian API lainnya, dengan http method POST, dan reuqest body JSON seperti berikut 
-
+Gunakan Postman, Apidog atau tools pengujian API lainnya, dengan http method POST 
+```bash
+localhost:8080/orders
+```
+reuqest body JSON seperti berikut : 
 ### 1. Positive case request
 ```bash
 {
