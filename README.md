@@ -37,7 +37,11 @@ docker-compose -f docker-compose-app.yaml up --build
 ```
 
 ###  3: Jalankan Aplikasi via IDE
-Aplikasi juga bisa dijalankan dengan membuka code menggunakan IDE yang biasa anda gunakan seperti Itellij Idea, vs code dan lain-lain, lalu jalankan perintah berikut :
+Aplikasi juga bisa dijalankan dengan membuka code menggunakan IDE yang biasa anda gunakan seperti Itellij Idea, vs code dan lain-lain, ubah parameter di application.properties menjadi
+```bash
+kafka.bootstrap.servers=localhost:29092
+```
+lalu jalankan perintah berikut :
 ```bash
 ./mvnw quarkus:dev
 ```

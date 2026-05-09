@@ -3,3 +3,4 @@
 !target/*-runner.jar
 !target/lib/*
 !target/quarkus-app/*
+!target/ifg-simple-eda-1.0-SNAPSHOT.jar

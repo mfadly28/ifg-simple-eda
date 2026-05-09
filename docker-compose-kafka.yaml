@@ -7,6 +7,8 @@ services:
     ]
     ports:
       - "2181:2181"
+    networks:
+      - kafka-net
     environment:
       LOG_DIR: /tmp/logs
 
@@ -14,12 +16,15 @@ services:
     image: quay.io/strimzi/kafka:0.35.0-kafka-3.4.0
     command: [
       "sh", "-c",
-      "bin/kafka-server-start.sh config/server.properties --override listeners=PLAINTEXT://0.0.0.0:9092 --override advertised.listeners=PLAINTEXT://kafka:9092 --override zookeeper.connect=zookeeper:2181"
+      "bin/kafka-server-start.sh config/server.properties --override listeners=DISTINCT://0.0.0.0:9092,HOST://0.0.0.0:29092 --override advertised.listeners=DISTINCT://kafka:9092,HOST://localhost:29092 --override listener.security.protocol.map=DISTINCT:PLAINTEXT,HOST:PLAINTEXT --override inter.broker.listener.name=DISTINCT --override zookeeper.connect=zookeeper:2181"
     ]
     depends_on:
       - zookeeper
     ports:
       - "9092:9092"
+      - "29092:29092"
+    networks:
+      - kafka-net
     environment:
       LOG_DIR: /tmp/logs
 
